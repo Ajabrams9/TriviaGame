@@ -1,8 +1,3 @@
-//create reset button
-//review .html("<img src...> whatever")
-//what does
-
-
 var time = 30;
 var count = 0;
 var guessArray = [];
