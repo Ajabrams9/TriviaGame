@@ -36,13 +36,18 @@ function checkRightArray() {
             console.log(answerArray);
             count++;
             console.log(count);
+            
         }
     }
 
     if(count == 3) {
-        console.log("all three correct!");
+        alert("You Answered All Three Correctly! 100%! Good Job!");
         newFunction();
         
+    } else if(count == 2 || count == 1) {
+        alert("Not Quite!");
+    } else {
+        alert("You Ansered All of the Questions INCORRECTLY!");
     }
 
     
@@ -157,6 +162,9 @@ var stopwatch = {
         $("#row2, #row3, #row4").hide();
         guessArray = [];
         $(".btn").prop("disabled", false);
+        $("#reset").hide();
+        $("#btn1a, #btn2c, #btn3c").css({"border-color": "", "border-width": ""});
+        count = 0;
     },
 
     //starts at 30 seconds, and counds down.
