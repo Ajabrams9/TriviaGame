@@ -1,7 +1,9 @@
+//document.getElementById("btn1b").disabled = false; why doesnt conver to $("#btn1b").disabled = false;
+
 var time = 30;
 var count = 0;
 var guessArray = [];
-var answerArray = ["a", "c", "a"];
+var answerArray = ["a", "c", "c"];
 
 
 window.onload = function () {
@@ -9,7 +11,8 @@ window.onload = function () {
     $("#reset").on("click", stopwatch.reset);
     pContent = $("#lossMessage");
     $("#row2, #row3, #row4").hide();
-    //$("#reset").hide();
+    $("#reset").hide();
+    
 };
 
 function showSecondQuestion() {
@@ -20,10 +23,17 @@ function showThirdQuestion() {
     $("#row4").show();
 }
 
+function newFunction() {
+     document.body.style.backgroundImage = "url('assets/images/memphis-colorful.png')";
+     
+    }
+
 
 function checkRightArray() {
     for(i=0; i<answerArray.length; i++) {
         if(guessArray[i] === answerArray[i]) {
+            console.log(guessArray);
+            console.log(answerArray);
             count++;
             console.log(count);
         }
@@ -31,7 +41,12 @@ function checkRightArray() {
 
     if(count == 3) {
         console.log("all three correct!");
+        newFunction();
+        
     }
+
+    
+    $("#btn1a, #btn2c, #btn3c").css({"border-color": "red", "border-width": "5px"});
 }
 
 
@@ -41,19 +56,22 @@ $(".btn").on("click", function () {
         guessArray.push($(this).val());
         console.log(guessArray);
         console.log("you clicked a");
-        $("#btn1b, #btn1c").off("click");
+        $("#btn1a, #btn1b, #btn1c").prop("disabled",true);
+        
         setTimeout(showSecondQuestion, 2000);
     } else if ($(this).attr('id') == "btn1b") {
         guessArray.push($(this).val());
         console.log(guessArray);
         console.log("you clicked b");
-        $("#btn1a, #btn1c").off("click");
+        $("#btn1a, #btn1b, #btn1c").prop("disabled",true);
+       
         setTimeout(showSecondQuestion, 2000);
     } else if ($(this).attr('id') == "btn1c") {
         guessArray.push($(this).val());
         console.log(guessArray);
         console.log("you clicked c");
-        $("#btn1a, #btn1b").off("click");
+        $("#btn1a, #btn1b, #btn1c").prop("disabled",true);
+        
         setTimeout(showSecondQuestion, 2000);
 
 
@@ -61,7 +79,7 @@ $(".btn").on("click", function () {
         guessArray.push($(this).val());
         console.log(guessArray);
         console.log("you clicked a");
-        $("#btn2b, #btn2c").off("click");
+        $("#btn2a, #btn2b, #btn2c").prop("disabled",true);
         setTimeout(showThirdQuestion, 2000);
     }
 
@@ -69,7 +87,7 @@ $(".btn").on("click", function () {
         guessArray.push($(this).val());
         console.log(guessArray);
         console.log("you clicked b");
-        $("#btn2a, #btn2c").off("click");
+        $("#btn2a, #btn2b, #btn2c").prop("disabled",true);
         setTimeout(showThirdQuestion, 2000);
     }
 
@@ -77,7 +95,7 @@ $(".btn").on("click", function () {
         guessArray.push($(this).val());
         console.log(guessArray);
         console.log("you clicked c");
-        $("#btn2a, #btn2b").off("click");
+        $("#btn2a, #btn2b, #btn2c").prop("disabled",true);
         setTimeout(showThirdQuestion, 2000);
     }
 
@@ -85,7 +103,7 @@ $(".btn").on("click", function () {
         guessArray.push($(this).val());
         console.log(guessArray);
         console.log("you clicked a");
-        $("#btn3b, #btn3c").off("click");
+        $("#btn3a, #btn3b, #btn3c").prop("disabled",true);
         clearInterval(countDown);
         clockRunning = false;
         console.log("you're finished");
@@ -97,7 +115,7 @@ $(".btn").on("click", function () {
         guessArray.push($(this).val());
         console.log(guessArray);
         console.log("you clicked b");
-        $("#btn3a, #btn3c").off("click");
+        $("#btn3a, #btn3b, #btn3c").prop("disabled",true);
         clearInterval(countDown);
         clockRunning = false;
         console.log("you're finished");
@@ -109,12 +127,14 @@ $(".btn").on("click", function () {
         guessArray.push($(this).val());
         console.log(guessArray);
         console.log("you clicked c");
-        $("#btn3a, #btn3b").off("click");
+        $("#btn3a, #btn3b, #btn3c").prop("disabled",true);
         clearInterval(countDown);
         clockRunning = false;
         console.log("you're finished");
         checkRightArray();
         $("#reset").show();
+       // $("#body").html("<img src='assets/images/memphis-colorful.png' width='200px'/>");
+       
     }
 })
 
@@ -136,7 +156,7 @@ var stopwatch = {
         $("#display").text(stopwatch.timeConverter(30));
         $("#row2, #row3, #row4").hide();
         guessArray = [];
-        
+        $(".btn").prop("disabled", false);
     },
 
     //starts at 30 seconds, and counds down.
