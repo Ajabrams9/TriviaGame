@@ -24,8 +24,8 @@ function showThirdQuestion() {
 }
 
 function newFunction() {
-     document.body.style.backgroundImage = "url('assets/images/memphis-colorful.png')";
-     
+    document.body.style.backgroundImage = "url('assets/images/memphis-colorful.png')";
+    
     }
 
 
@@ -165,6 +165,7 @@ var stopwatch = {
         $("#reset").hide();
         $("#btn1a, #btn2c, #btn3c").css({"border-color": "", "border-width": ""});
         count = 0;
+        document.body.style.backgroundImage = "none";
     },
 
     //starts at 30 seconds, and counds down.
@@ -177,8 +178,13 @@ var stopwatch = {
 
         if (time === 0) {
             clearInterval(countDown);
-
             pContent.text("Time's Up, You Lose!");
+            $("#row2, #row3, #row4").show();
+            $("#reset").show();
+            alert("Time's Up, You Lose!")
+            //$("#display).css("color", "red");
+            $("#btn1a, #btn2c, #btn3c").css({"border-color": "red", "border-width": "5px"});
+          
         }
 
     },

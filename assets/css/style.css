@@ -1,6 +1,6 @@
 #display {
   font-family: monospace;
-  font-size: 120px;
+  font-size: 150px;
   color: green;
 
   /* Typography */
@@ -8,7 +8,16 @@
 
 }
 
-#smaller {
-    font-size: 14px;
-   
+
+.rowUpper {
+  height: 50px;
+}
+
+/* .row {
+  height: 50px;
+} */
+
+.jumbotron {
+  background-color: #F5B041;
+  
 }
