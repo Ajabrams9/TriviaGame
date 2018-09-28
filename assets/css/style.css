@@ -13,9 +13,9 @@
   height: 50px;
 }
 
-/* .row {
-  height: 50px;
-} */
+.row {
+  margin: 50px;
+}
 
 .jumbotron {
   background-color: #F5B041;

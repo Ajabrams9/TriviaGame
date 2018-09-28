@@ -63,7 +63,7 @@ function checkRightArray() {
     } else if(count == 2 || count == 1) {
         alert("Not Quite!");
     } else {
-        alert("You Ansered All of the Questions INCORRECTLY!");
+        alert("You Answered All of the Questions INCORRECTLY!");
     }
 
     
