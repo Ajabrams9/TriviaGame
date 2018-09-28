@@ -5,6 +5,17 @@ var count = 0;
 var guessArray = [];
 var answerArray = ["a", "c", "c"];
 
+var audioElement = document.createElement("audio");
+audioElement.setAttribute("src", "assets/images/captainplanet24.mp3");
+
+    // // Theme Button
+    // $(".theme-button").on("click", function() {
+    //   audioElement.play();
+    // });
+    // $(".pause-button").on("click", function() {
+    //   audioElement.pause();
+    // });
+
 
 window.onload = function () {
     $("#start").on("click", stopwatch.start);
@@ -48,7 +59,7 @@ function checkRightArray() {
     if(count == 3) {
         alert("You Answered All Three Correctly! 100%! Good Job!");
         newFunction();
-        
+        audioElement.play();
     } else if(count == 2 || count == 1) {
         alert("Not Quite!");
     } else {
@@ -172,7 +183,7 @@ var stopwatch = {
         count = 0;
         document.body.style.backgroundImage = "none";
         $("#display").css("color", "green");
-        
+        audioElement.pause();
     },
 
     //starts at 30 seconds, and counds down.
