@@ -29,6 +29,11 @@ function newFunction() {
     }
 
 
+
+
+ 
+
+
 function checkRightArray() {
     for(i=0; i<answerArray.length; i++) {
         if(guessArray[i] === answerArray[i]) {
@@ -166,6 +171,8 @@ var stopwatch = {
         $("#btn1a, #btn2c, #btn3c").css({"border-color": "", "border-width": ""});
         count = 0;
         document.body.style.backgroundImage = "none";
+        $("#display").css("color", "green");
+        
     },
 
     //starts at 30 seconds, and counds down.
@@ -176,15 +183,20 @@ var stopwatch = {
         displayFormattedTime = stopwatch.timeConverter(time);
         $("#display").html(displayFormattedTime);
 
+        if(time === 5) {
+            
+        $("#display").css("color", "red");
+
+        }
+
         if (time === 0) {
             clearInterval(countDown);
             pContent.text("Time's Up, You Lose!");
             $("#row2, #row3, #row4").show();
             $("#reset").show();
             alert("Time's Up, You Lose!")
-            //$("#display).css("color", "red");
             $("#btn1a, #btn2c, #btn3c").css({"border-color": "red", "border-width": "5px"});
-          
+            $(".btn").prop("disabled",true);
         }
 
     },
